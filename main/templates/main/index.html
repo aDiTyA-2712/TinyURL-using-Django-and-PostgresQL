@@ -1,0 +1,14 @@
+
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/css/styling.css' %}">
+<form action="{% url 'shorten_post' %}" method="post" class="form-container">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="url">URL</label>
+    <input type="text" name="url" id="url" class="form-control" required>
+  </div>
+  <button class="btn btn-primary" type="submit">Shorten</button>
+</form>
+{% endblock %}
