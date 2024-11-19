@@ -1,7 +1,33 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-<div class="mdc-card__content">
-  <p>Shortened URL: <a href="{{shortened_url}}">{{shortened_url}}</a></p>
+<div class="mdc-card">
+    <div class="mdc-card__content" style="padding: 2em; text-align: center;">
+        <h2 class="mdc-typography--headline6" style="margin-bottom: 1em;">TinyURL Service</h2>
+        <p>Shortened URL:</p>
+        <a href="{{ shortened_url }}" id="shortened-url" class="mdc-typography--body1" 
+           style="color: #6200ee; text-decoration: none; font-weight: bold;">
+            {{ shortened_url }}
+        </a>
+        <br><br>
+        <button id="copy-button" class="mdc-button mdc-button--raised" style="background-color: #6200ee; color: white;">
+            Copy URL
+        </button>
+    </div>
 </div>
+
+<script>
+    // JavaScript to copy the URL to the clipboard
+    document.getElementById('copy-button').addEventListener('click', function() {
+        // Get the URL text
+        const urlText = document.getElementById('shortened-url').textContent;
+
+        // Copy the URL to the clipboard
+        navigator.clipboard.writeText(urlText).then(function() {
+            alert('Shortened URL copied to clipboard!');
+        }).catch(function(err) {
+            console.error('Failed to copy: ', err);
+        });
+    });
+</script>
 {% endblock %}
