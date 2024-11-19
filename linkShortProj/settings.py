@@ -97,7 +97,7 @@ app = Celery('linkShortProj')
 CELERY_BEAT_SCHEDULE = {
     'delete-expired-urls': {
         'task': 'main.tasks.delete_expired_urls',
-        'schedule': 300.0 
+        'schedule': 300.0, 
     },
 }
 
