@@ -1,14 +1,23 @@
 
 {% extends 'main/base.html' %}
 {% load static %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'main/css/styling.css' %}">
-<form action="{% url 'shorten_post' %}" method="post" class="form-container">
-  {% csrf_token %}
-  <div class="form-group">
-    <label for="url">URL</label>
-    <input type="text" name="url" id="url" class="form-control" required>
-  </div>
-  <button class="btn btn-primary" type="submit">Shorten</button>
-</form>
+
+<div class="form-container">
+    <div class="form-title">TinyURL Generator</div>
+    
+    <form action="{% url 'shorten_post' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="url" style="display: block; text-align: center;">Enter the URL</label>
+            <input type="text" name="url" id="url" class="form-control" placeholder="Enter your URL here" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Shorten</button>
+    </form>
+    <div class="footer-note">
+        created by Aditya Kumar<a href="https://github.com/aDiTyA-2712">(Github)</a>.
+    </div>
+</div>
 {% endblock %}
